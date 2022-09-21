@@ -41,7 +41,7 @@ $cor-tema: #057a61 // 00a884
 
 .titulo
 
-  height: 100px
+  min-height: 100px
   width: 100%
   background-color: $cor-tema
   border-radius: 0.3rem 0.3rem 0 0
@@ -62,6 +62,7 @@ $cor-tema: #057a61 // 00a884
   // min-height: 200px
   flex-grow: 1
   // background-color: #0fd
+  // padding: 5px
   border-radius: 0 0 0.5rem 0.5rem
 
   display: flex
@@ -71,8 +72,11 @@ $cor-tema: #057a61 // 00a884
 
   h3
     font-weight: normal
-    padding: 10px
+    padding: 0px 40px 0 40px
     // background-color: #fda
+
+    @media only screen and (max-width: 720px)
+      padding: 20px 40px 20px 40px
 
   .css-sghohy-MuiButtonBase-root-MuiButton-root
     background-color: $cor-tema !important
@@ -83,6 +87,9 @@ $cor-tema: #057a61 // 00a884
     border: 1px solid rgba(211, 47, 47, 0.5) !important
     color: rgb(211, 47, 47) !important
 
+  @media only screen and (max-width: 720px)
+    min-height: 375px
+
 .opcoes-rotulo
 
   // background-color: #f0f
@@ -91,6 +98,7 @@ $cor-tema: #057a61 // 00a884
   flex-direction: column
   justify-content: center
   align-items: center
+  padding-bottom: 10px
 
   .espaco-botoes
     margin: 5px
