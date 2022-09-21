@@ -3,6 +3,9 @@
   margin: 0
   font-family: Roboto, sans-serif
 
+body
+  background-color: #ddd
+
 main
   background-color: #ddd
   // color: #212121
@@ -117,7 +120,7 @@ $cor-tema: #057a61 // 00a884
   .categorias-crimes
 
     // background-color: #fde
-    // width: 100%
+    width: 100%
     display: flex
     flex-direction: row
     flex-wrap: wrap
@@ -126,9 +129,14 @@ $cor-tema: #057a61 // 00a884
 
     @media only screen and (max-width: 720px)
       width: 100%
-      flex-direction: column
-      justify-content: center
+      flex-direction: row
+      justify-content: space-around
       // align-content: flex-start
       align-items: center
       // margin: 0.5rem 0 0.5rem 0
       // padding: 0.25rem 0 0.25rem 0
+    
+    .tamanho-botao
+
+      @media only screen and (max-width: 720px)
+        width: 47.5%

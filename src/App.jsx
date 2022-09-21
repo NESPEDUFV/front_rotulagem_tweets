@@ -118,7 +118,7 @@ function App() {
               <Button
                 variant="contained"
                 endIcon={<Woman2Icon />}
-                className="espaco-botoes"
+                className="espaco-botoes tamanho-botao"
                 onClick={() => rotulaTweet('Assédio')}
               >
                 Assédio
@@ -126,7 +126,7 @@ function App() {
               <Button
                 variant="contained"
                 endIcon={<PanToolIcon />}
-                className="espaco-botoes"
+                className="espaco-botoes tamanho-botao"
                 onClick={() => rotulaTweet('Roubo')}
               >
                 Roubo
@@ -134,7 +134,7 @@ function App() {
               <Button
                 variant="contained"
                 endIcon={<VisibilityOffIcon />}
-                className="espaco-botoes"
+                className="espaco-botoes tamanho-botao"
                 onClick={() => rotulaTweet('Furto')}
               >
                 Furto
@@ -142,7 +142,7 @@ function App() {
               <Button
                 variant="contained"
                 endIcon={<PointOfSaleIcon />}
-                className="espaco-botoes"
+                className="espaco-botoes tamanho-botao"
                 onClick={() => rotulaTweet('Assalto')}
               >
                 Assalto
@@ -150,7 +150,7 @@ function App() {
               <Button
                 variant="contained"
                 endIcon={<ThumbsUpDownIcon />}
-                className="espaco-botoes"
+                className="espaco-botoes tamanho-botao"
                 onClick={() => rotulaTweet('Agressão')}
               >
                 Agressão
@@ -158,7 +158,7 @@ function App() {
               <Button
                 variant="contained"
                 endIcon={<CarCrashIcon />}
-                className="espaco-botoes"
+                className="espaco-botoes tamanho-botao"
                 onClick={() => rotulaTweet('Acidente')}
               >
                 Acidente
@@ -166,7 +166,7 @@ function App() {
               <Button
                 variant="contained"
                 endIcon={<MoodBadIcon />}
-                className="espaco-botoes"
+                className="espaco-botoes tamanho-botao"
                 onClick={() => rotulaTweet('Homicídio')}
               >
                 Homicídio
