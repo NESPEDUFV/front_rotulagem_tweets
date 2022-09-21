@@ -13,11 +13,22 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import MoodBadIcon from '@mui/icons-material/MoodBad'
 import TwitterIcon from '@mui/icons-material/Twitter'
 
+import Snackbar from "@mui/material/Snackbar"
+import MuiAlert from "@mui/material/Alert"
+
 const API_URL = "http://localhost:3000/"
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+})
 
 function App() {
 
   const [tweet, setTweet] = useState('')
+
+  const [openSnackBar, setOpenSnackBar] = useState(false)
+  const [msgPedido, setMsgPedido] = useState("Erro ao rotular tweet!")
+  const [statusMsgPedido, setStatusMsgPedido] = useState(false)
 
   const carregarTweetRotular = async () => {
     const response = await fetch(`${API_URL}tweets/listar/tweet/rotular`, {
@@ -50,14 +61,30 @@ function App() {
 
     // console.log(data, categoria)
 
-    if (!data.error)
+    if (!data.error) {
+      setMsgPedido("Tweet rotulado com sucesso!")
+      setStatusMsgPedido(true)
+      setOpenSnackBar(true)
       carregarTweetRotular()
+    } else {
+      setMsgPedido('Erro ao rotular tweet!')
+      setStatusMsgPedido(false)
+      setOpenSnackBar(true)
+    }
 
   }
 
   useEffect(() => {
     carregarTweetRotular()
   }, [])
+
+  const handleCloseSnackBar = (event, reason) => {
+    if (reason === "clickaway") {
+      return
+    }
+
+    setOpenSnackBar(false)
+  }
 
   return (
     <main>
@@ -113,6 +140,20 @@ function App() {
           </div>
         </div>
       </div>
+      <Snackbar
+        open={openSnackBar}
+        autoHideDuration={2000}
+        onClose={handleCloseSnackBar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+      >
+        <Alert
+          onClose={handleCloseSnackBar}
+          severity={statusMsgPedido ? "success" : "error"}
+          sx={{ width: "100%", backgroundColor: "#057a61" }}
+        >
+          {msgPedido}
+        </Alert>
+      </Snackbar>
     </main>
   )
 }
