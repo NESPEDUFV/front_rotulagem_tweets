@@ -19,7 +19,8 @@ import PointOfSaleIcon from '@mui/icons-material/PointOfSale'
 import Snackbar from "@mui/material/Snackbar"
 import MuiAlert from "@mui/material/Alert"
 
-const API_URL = "http://localhost:3000/"
+// const API_URL = "http://localhost:3000/"
+const API_URL = "https://api-rotulagem-tweets.herokuapp.com/"
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
