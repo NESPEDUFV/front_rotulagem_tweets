@@ -12,6 +12,9 @@ import PanToolIcon from '@mui/icons-material/PanTool'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import MoodBadIcon from '@mui/icons-material/MoodBad'
 import TwitterIcon from '@mui/icons-material/Twitter'
+import CarCrashIcon from '@mui/icons-material/CarCrash'
+import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown'
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale'
 
 import Snackbar from "@mui/material/Snackbar"
 import MuiAlert from "@mui/material/Alert"
@@ -47,27 +50,35 @@ function App() {
   const rotulaTweet = async (categoria) => {
     console.log(categoria, tweet.idTweet)
     console.log(JSON.stringify({ categoriaRotulo: categoria, idTweet: tweet.idTweet }))
-    const response = await fetch(`${API_URL}tweets/rotular/tweet`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-        // 'Access-Control-Request-Headers': 'Content-Type, Authorization'
-      },
-      method: "POST",
-      body: JSON.stringify({ categoriaRotulo: categoria, idTweet: tweet.idTweet })
-    })
 
-    const data = await response.json()
+    if(tweet.idTweet != -1) {
+      const response = await fetch(`${API_URL}tweets/rotular/tweet`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+          // 'Access-Control-Request-Headers': 'Content-Type, Authorization'
+        },
+        method: "POST",
+        body: JSON.stringify({ categoriaRotulo: categoria, idTweet: tweet.idTweet })
+      })
 
-    // console.log(data, categoria)
+      const data = await response.json()
 
-    if (!data.error) {
-      setMsgPedido("Tweet rotulado com sucesso!")
-      setStatusMsgPedido(true)
-      setOpenSnackBar(true)
-      carregarTweetRotular()
+      // console.log(data, categoria)
+
+      if (!data.error) {
+        setMsgPedido("Tweet rotulado com sucesso!")
+        setStatusMsgPedido(true)
+        setOpenSnackBar(true)
+        carregarTweetRotular()
+      } else {
+        setMsgPedido('Erro ao rotular tweet!')
+        setStatusMsgPedido(false)
+        setOpenSnackBar(true)
+      }
+    
     } else {
-      setMsgPedido('Erro ao rotular tweet!')
+      setMsgPedido('Não há mais tweets para rotular!')
       setStatusMsgPedido(false)
       setOpenSnackBar(true)
     }
@@ -130,6 +141,30 @@ function App() {
               </Button>
               <Button
                 variant="contained"
+                endIcon={<PointOfSaleIcon />}
+                className="espaco-botoes"
+                onClick={() => rotulaTweet('Assalto')}
+              >
+                Assalto
+              </Button>
+              <Button
+                variant="contained"
+                endIcon={<ThumbsUpDownIcon />}
+                className="espaco-botoes"
+                onClick={() => rotulaTweet('Agressão')}
+              >
+                Agressão
+              </Button>
+              <Button
+                variant="contained"
+                endIcon={<CarCrashIcon />}
+                className="espaco-botoes"
+                onClick={() => rotulaTweet('Acidente')}
+              >
+                Acidente
+              </Button>
+              <Button
+                variant="contained"
                 endIcon={<MoodBadIcon />}
                 className="espaco-botoes"
                 onClick={() => rotulaTweet('Homicídio')}
@@ -149,7 +184,7 @@ function App() {
         <Alert
           onClose={handleCloseSnackBar}
           severity={statusMsgPedido ? "success" : "error"}
-          sx={{ width: "100%", backgroundColor: "#057a61" }}
+          sx={{ width: "100%", backgroundColor: statusMsgPedido ? "#057a61" : "#d32f2f" }}
         >
           {msgPedido}
         </Alert>
