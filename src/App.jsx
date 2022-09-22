@@ -15,6 +15,7 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import CarCrashIcon from '@mui/icons-material/CarCrash'
 import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown'
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale'
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip'
 
 import Snackbar from "@mui/material/Snackbar"
 import MuiAlert from "@mui/material/Alert"
@@ -171,6 +172,14 @@ function App() {
                 onClick={() => rotulaTweet('Homicídio')}
               >
                 Homicídio
+              </Button>
+              <Button
+                variant="contained"
+                endIcon={<PrivacyTipIcon />}
+                className="espaco-botoes tamanho-botao"
+                onClick={() => rotulaTweet('Outros')}
+              >
+                Outros
               </Button>
             </div>
           </div>
